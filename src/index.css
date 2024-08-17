@@ -74,6 +74,8 @@ body {
   padding: 16px;
   display: flex;
   flex-direction: column;
+  background-color: #1a1a1a;
+  color: white;
 }
 
 #root {

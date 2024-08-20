@@ -6,24 +6,21 @@ import MailboxDetails from './components/MailboxDetails.jsx';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 
-const mailboxInitialState = [
-    {_id: 1, boxholder: 'Gab', boxSize: 'Small'},
-]
 
 const App = () => {
 
-  const [mailboxes, setMailboxes] = useState(mailboxInitialState);
+  const [mailboxes, setMailboxes] = useState([]);
 
   const addBox = (newMail) => {
     newMail._id = mailboxes.length + 1
     setMailboxes([...mailboxes, newMail])
   }
 
+  console.log(mailboxes)
   return(
       <>
 
         <Navbar />
-
 
         <Routes>
           <Route path='/' element={<main><h1>Post Office</h1></main>} />

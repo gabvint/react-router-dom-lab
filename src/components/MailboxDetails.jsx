@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 
-
 const MailboxDetails = (props) => {
 
     const { mailboxesId } = useParams()
     const thisMail = props.mailboxes.find((mail) => mail._id === Number(mailboxesId));
+    
 
     return (  
         <>

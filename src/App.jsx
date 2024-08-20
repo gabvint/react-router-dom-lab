@@ -11,7 +11,7 @@ import { useState } from 'react';
 const App = () => {
 
   const [mailboxes, setMailboxes] = useState([]);
-  const [letter, setLetter] = useState([]);
+  const [letters, setLetter] = useState([]);
 
   const addBox = (newMail) => {
     newMail._id = mailboxes.length + 1
@@ -19,10 +19,11 @@ const App = () => {
   }
 
   const addLetter = (newLetter) => {
-    setLetter([...letter, newLetter])
+    setLetter([...letters, newLetter])
   }
 
   console.log(mailboxes)
+  console.log(letters)
   return(
       <>
 
@@ -31,9 +32,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<main><h1>Post Office</h1></main>} />
           <Route path='/mailboxes' element={<MailboxList mailboxes={mailboxes} />} />
-          <Route path='/mailboxes/:mailboxesId' element={<MailboxDetails mailboxes={mailboxes} />} />
+          <Route path='/mailboxes/:mailboxesId' element={<MailboxDetails mailboxes={mailboxes} letters={letters} />} />
           <Route path='/new-mailbox' element={<MailboxForm addBox={addBox} />} />
-          <Route path='/new-letter' element={<LetterForm addLetter={addLetter} />} />
+          <Route path='/new-letter' element={<LetterForm addLetter={addLetter} mailboxes={mailboxes}/>} />
           <Route path='*' element={<h1>Mailbox Not Found!</h1>} />
         </Routes>
 

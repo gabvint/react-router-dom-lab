@@ -4,6 +4,7 @@ const MailboxDetails = (props) => {
 
     const { mailboxesId } = useParams()
     const thisMail = props.mailboxes.find((mail) => mail._id === Number(mailboxesId));
+    const recipientLetters = props.letters.filter((letter) => Number(letter.mailboxId) === Number(mailboxesId));
     
 
     return (  
@@ -13,7 +14,16 @@ const MailboxDetails = (props) => {
            <h3>Details</h3>
            <p>Box Holder: {thisMail.boxholder}</p>
            <p>Box Size: {thisMail.boxSize}</p>
-        
+
+           <h2>Letters</h2>
+
+           {recipientLetters.map((letter, index) => (
+                <div key={index}>
+                    <p>Dear, {letter.recipient}</p>
+                    <p>{letter.message}</p>
+                </div>
+           ))}
+
         </>
     );
 }
